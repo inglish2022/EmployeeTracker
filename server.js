@@ -7,11 +7,75 @@ const mysql = require('mysql2');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+const consoleTable = require('console.table');
+const Connection = require('mysql2/typings/mysql/lib/Connection');
+
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+const promptUser = () => {
+    inquirer.prompt ([
+      {
+        name: 'action',
+        type: 'list',
+        name: 'choices', 
+        message: 'What would you like to do?',
+        choices:  [
+            'View all departments',
+            'View all employees',
+            'View all roles',
+            'Add a department',
+            'Add an employee',
+            'Add a role',
+            'Update an employee role',
+            'Delete a department',
+            'Delete a role',
+            'Delete an employee',
+            'EXIT'
+            ]
+        }
+    ])
 
+    .then((answers)  =>  {
+        const { choices } = answers;
+
+        if (choices === 'View all departments')  {
+            showDepartments();
+        }
+        if (choices === 'View all employees')  {
+            showEmployees();
+        }
+        if (choices === 'View all roles')  {
+            showRoles();
+        }
+        if (choices === 'Add a department')  {
+            addDepartment();
+        }
+        if (choices === 'Add an employee')  {
+            addEmployee();
+        }
+        if (choices === 'Add a role')  {
+            addRole();
+        }
+        if (choices === 'Update an employee role')  {
+            updateEmployee();
+        }
+        if (choices === 'Delete a department')  {
+            deleteDepartment();
+        }
+        if (choices === 'Delete an employee')  {
+            deleteEmployee();
+        }
+        if (choices === 'Delete a role')  {
+            deleteRole();
+        }
+        if (choices === 'EXIT')  {
+            connection.end();
+        };
+        
+    });
+};
 
 
 

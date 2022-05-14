@@ -8,5 +8,6 @@ CREATE TABLE role  (
   title VARCHAR(50) NOT NULL,
   salary DECIMAL NOT NULL,
   department_id INTEGER,
-  INDEX dep_ind (department_id)
+  INDEX dep_ind (department_id),
+  CONSTRAINT fk_party FORIEGN KEY (department_id) REFERENCES department(id) ON DELETE SET NULL
 );

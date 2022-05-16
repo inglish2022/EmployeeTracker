@@ -24,7 +24,6 @@ const db = mysql.createConnection(
         password: 'Reagan111501',
         database: 'employee_tracker_db'
     },
-    console.log('Connected to the employee_tracker_db database.'),
     console.log(' ______________________________________________'),
     console.log('|                                              |'),
     console.log('|  YOU ARE CONNECTED TO THE EMPLOYEE DATABASE  |'),
@@ -33,7 +32,7 @@ const db = mysql.createConnection(
 
 );
 
-afterConnection = () =>  {
+ afterConnection = () =>  {
     promptUser();
 };
 

@@ -180,8 +180,8 @@ addRole = () => {
     inquirer.prompt([
         {
             type: 'input',
-            name: 'addRole',
-            message: "What role would you like to add?",
+            name: 'role',
+            message: "What is the title of the role you would like to add?",
             validate: addRole => {
                 if (addRole) {
                     return true;
@@ -208,7 +208,7 @@ addRole = () => {
 
     ])
         .then(answer => {
-            const params = [answer.role, answer.salary];
+            const params = [answer.role, answer.addSalary];
 
             // get dept from department table
             const roleSql = `SELECT name, id FROM department`;
